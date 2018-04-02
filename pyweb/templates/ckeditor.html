@@ -8,28 +8,72 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="../../static/ckeditor/ckeditor.js"></script>
+    <script src="../../static/ckeditor/config.js"></script>
     <title>Hello, world!</title>
   </head>
   <body>
-    <nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-</nav>
+  
+ <!--    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+    </nav>
 
+    <hr class="my-4"> -->
 
+            
+            
 
-     <textarea name="editor1" id="editor1" rows="10" cols="80">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        
+            <textarea name="editor1" id="editor1" rows="10" cols="80">
                 This is my textarea to be replaced with CKEditor.
             </textarea>
-            <script>
-                // Replace the <textarea id="editor1"> with a CKEditor
-                // instance, using default configuration.
-                CKEDITOR.replace( 'editor1' );
-            </script>
+
+      </div>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+            <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace( 'editor1', {
+                  language:'zh-cn'/*,
+                  extraPlugins:'autogrow',
+                  autoGrow_minHeight:250,
+                  autoGrow_maxHeight:600*/
+                });
+
+
+
+                var data = CKEDITOR.instances.editor1.getData();
+                // Your code to save "data", usually through Ajax.
+
+               /* CKEDITOR.editorConfig = function( config ) {
+                    config.language = 'fr';
+                    config.uiColor = '#AADC6E';
+                    config.extraPlugins = 'autogrow';
+                    config.autoGrow_minHeight = 250;
+                    config.autoGrow_maxHeight = 600;
+                };*/
+
+                // Load data synchronously.
+                var data = CKEDITOR.ajax.load( 'somedata.txt' );
+                alert( data );
+
+                // Load data asynchronously.
+                var data = CKEDITOR.ajax.load( 'somedata.txt', function( data ) {
+                    alert( data );
+                } );
+            </script>
   </body>
 </html>
