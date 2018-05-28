@@ -124,7 +124,7 @@
             </div>
           </div>
 
-            <form>
+            <form method="post" enctype="multipart/form-data" action="../post_data">
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputEmail4">月份</label>
@@ -164,7 +164,7 @@
               
               <div class="file-loading form-group">
                   <!-- <label class="control-label">文件上传</label> -->
-                  <input id="file-zh" name="file-zh[]" type="file" multiple>
+                  <input id="file-zh" name="file" type="file" multiple>
 
               </div>
           
@@ -221,16 +221,16 @@
        $("#file-zh").fileinput({
             language: 'zh',
             showUpload:false, 
-            uploadUrl: '#',
+            uploadUrl: '../uploadFile',
             previewFileType:'any'
         });
 
-         $('#file-fr').fileinput({
+        $('#file-fr').fileinput({
         theme: 'fa',
         language: 'zh',
         uploadUrl: '#',
         allowedFileExtensions: ['jpg', 'png', 'gif']
-    });
+      });
 
      // $(function(){
      //      // with plugin options
