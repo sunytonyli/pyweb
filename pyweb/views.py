@@ -1,9 +1,10 @@
 from pyweb import app
 from flask import Flask, url_for, render_template
+import time
 
 @app.route('/')
 def index():
-	return render_template('index.html')
+	return render_template('index.html', time = time.strftime('%Y-%m-%d %H-%M-%S'), month = time.strftime('%m'))
 
 @app.route('/demo')
 def demo():

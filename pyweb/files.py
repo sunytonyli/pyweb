@@ -1,10 +1,12 @@
 #coding:utf-8
 from pyweb import app
-import os
+import os, sys
 from flask import Flask, flash, request, redirect, url_for
 from werkzeug.utils import secure_filename
 from flask import send_from_directory
 
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
 UPLOAD_FOLDER = 'D:/python/testupload'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
@@ -37,8 +39,8 @@ def post_data():
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],
-                               filename)
+    #return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+    return '成功上传 %s' % filename
 
 
 @app.route('/uploadFile', methods=['GET', 'POST'])
